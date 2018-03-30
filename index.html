@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Mergers + Acquistions </title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <link href="responsive.css" rel="stylesheet" type="text/css" />
     <link href="main.css" rel="stylesheet" type="text/css" />
-    <script src="index.js"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="company.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+
+
 </head>
 
 <body>
     <div class="nav-logo">
-       <section class="logo">Logo here</section>
+        <section class="logo">Logo here</section>
         <nav role="navigation">
             <a href="/">Home
-                </a>
-                <a href="#">Portfolio</a>
-                <a href="#">Financial Documentation</a>
-                <a href="#">Public Disclosures</a>
+            </a>
+            <a href="#">Portfolio</a>
+            <a href="#">Financial Documentation</a>
+            <a href="#">Public Disclosures</a>
         </nav>
     </div>
-    
+
     <main role="main">
         <div class="new-company">
-                <h3>Create New Investment</h3>
-                <form>
-                    <legend>Add New Target</legend>
-                    <fieldset>
-                        Target Name:
-                        <input type="text">
-                        <br> Company Info:
-                        <input type="text">
-                        <br> Key Contacts:
-                        <input type="text">
-                        <br> Financial Performance:
-                        <input type="text">
-                        <br>
-                        <input type="submit" value="Add New Target">
-                    </fieldset>
-                </form>
+            <h3>Create New Investment</h3>
+            <form>
+                <legend>Add New Target</legend>
+                <fieldset>
+                    Target Name:
+                    <input type="text">
+                    <br> Company Info:
+                    <input type="text">
+                    <br> Key Contacts:
+                    <input type="text">
+                    <br> Financial Performance:
+                    <input type="text">
+                    <br>
+                    <input type="submit" value="Add New Target">
+                </fieldset>
+            </form>
         </div>
 
         <div class="row">
             <section class="col-6 prospects">
                 <h2>Prospect Information</h2>
                 Company information here.... blah blah blah
-                <br>
-                blah blah blah
+                <br> blah blah blah
             </section>
 
             <div class="row" id="future-investment">
-                <section class="company-list col-6">
+                <!-- <section class="company-list col-6">
                     <section class="company1">
                         <h3>Company A</h3>
                         <section class="inner-photo">
@@ -90,13 +94,14 @@
                         </ul>
                         <button class="add">Add to List</button>
                     </section>
-                </section>
+                </section> -->
             </div>
-            </div>
+        </div>
 
 
-            
+
     </main>
-    <script src="company.js"></script>
+
 </body>
+
 </html>

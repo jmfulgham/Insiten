@@ -24,31 +24,24 @@ let companyList = [{
 
 ]
 
-document.body.onload = addDiv;
-
-
 function addDiv(){
-    //spread information to the three divs in HTML
-    //replace HTML already in mockup
-    //<div class="future-investment row">
     console.log("Loaded");
-    const div = document.getElementById('future-investment');
-    let divChild = document.createElement('section');
-    divChild.className = "newCompany col-6";
-    divChild.innerHTML='<h1>This is a test</h1>';
-    console.log(divChild, div);
-    div.appendChild(divChild);
-    
-    //document.getElementsByClassName('future-investment').appendChild(div);
+    let newDiv=`<section class="newCompany col-6"><h2>The company name</h2></section>`;
+    $('future-investment').append(newDiv);
+    console.log(newDiv, 'done');
 }
 
-function addAllSections() {
-    //add sections for each company
+
+function addCompanyName(name) {
+    //add the company name to the div
+    let section = document.getElementById('newCompany');
+    name = "Company 123";
+    section.innerHTML= name;
 }
 
-function addCompanyName() {
-    //loop through each section and add company name with h3 tag
-}
+
+// var d1 = document.getElementById('one');
+// d1.insertAdjacentHTML('beforeend', '<div id="two">two</div>');
 
 function addAllCompanyNames() {
     //add ALL company names with h3 tag
@@ -61,3 +54,9 @@ function addCompanyStatus() {
 function addAllCompanyStatuses() {
 
 }
+
+function addAllSections() {
+    //add sections for each company
+}
+
+$(addDiv)

@@ -14,9 +14,7 @@ li{
 }
 
 .newCompany{
-    display: inline-block;
     border: 1px solid pink;
-    margin: 10px;
 }
 
 nav{

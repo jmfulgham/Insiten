@@ -1,5 +1,5 @@
-let companyList = [
-    {
+let companyList = [{
+        "Company Code": "ABC",
         "Company Name": "ABC REIT",
         "Status": "Researching",
         "Company Information": "ABC REIT specializes in commerical real estate properties. Their specialties include property sales, leasing, leins, and land.",
@@ -8,6 +8,7 @@ let companyList = [
     },
 
     {
+        "Company Code": "OFT",
         "Company Name": "One Financial Trust",
         "Status": "Approved",
         "Company Information": "One Financial Trust is a small credit union.",
@@ -16,7 +17,8 @@ let companyList = [
     },
 
     {
-        "Company Name": "Sunshine Retirment Homes, LLC",
+        "Company Code": "SRH",
+        "Company Name": "Sunshine Retirement Homes, LLC",
         "Status": "Pending",
         "Company Information": "Retirement home communities.",
         "Key Contacts": "Alan Smith, Phone: 404-123-4567, Email: asmith@abcreit.com",
@@ -24,69 +26,94 @@ let companyList = [
     }
 
 ]
-let name = "123 Construction Company, LLC";
-let status = "Pending";
-let companyInfo= "Construction Company";
-let keyContacts = "Mone\'t Fulgham; Phone: 4049019199, Email: monetfulgham@gmail.com";
-let finPerf = "On track: Scheduled to develop 10 properties in Q2 2018";
+// let name = companyList["Company Name"];
+// let status = "Pending";
+// let companyInfo= "Construction Company";
+// let keyContacts = "Mone\'t Fulgham; Phone: 4049019199, Email: monetfulgham@gmail.com";
+// let finPerf = "On track: Scheduled to develop 10 properties in Q2 2018";
 
-function createNewDiv(index){
-    let newDiv=`<section class="newCompany"` + index + `col-6"></section>`;
-    $('#future-investment').append(newDiv);
+let name;
+let code;
+let status;
+let companyInfo;
+let keyContacts;
+let financialPerformance;
+//format div with the name and class name
+function createNewSection(name, code) {
+    let newSection = `<section class="newCompany ` + code + ` col-6"><h2>` + name + `</h2><ul></ul></section>`;
+    let futureInvestment = $('#future-investment');
+    futureInvestment.append(newSection);
 }
 
-function createMultipleDivs(arrayOfObjs){
-    arrayOfObjs.forEach(function(index){
-        console.log("Executed", index);
-        createNewDiv(index);
+
+//creating sections for each company in arr of obj
+function createMultipleDivs(arrayOfObjs) {
+    arrayOfObjs.forEach(function (obj) {
+        name = obj["Company Name"];
+        code = obj["Company Code"]
+        createNewSection(name, code)
     });
 }
 
-//so far I've added multiple divs to the DOM for each company in companyList. Next is to figure out the loop to add Company
-//Names correctly to each div. Will stop here tonight and pick up tomorrow.
-
-function addCompanyName(name) {
-    //add the company name to the div
-    $('.newCompany').append("<h2>" + name + "</h2>");
-}
-function addObjectCompanyName(objectOfCompany){
-    let first= objectOfCompany[0]["Company Name"];
-    addCompanyName(first);
+function addCompanyStatus(status, code) {
+    $(`.` + code).append("<li><b>Status</b>: " + status + "</li>");
 }
 
-function addMultipleCompanyNames(arrayOfObjs){
-    arrayOfObjs.forEach(function (names){
-        addObjectCompanyName(names);
-    })
+function addObjCompanyStatus(arrayOfObjs) {
+    arrayOfObjs.forEach(function (obj) {
+        status = `<li>` + obj['Status'] + `<li>`;
+        code = obj["Company Code"];
+        addCompanyStatus(status, code);
+    }); 
 }
 
-function addCompanyStatus(status) {
-    $('.newCompany').append("<li><b>Status</b>: " + status + "</li>");
+function addCompanyInfo(companyInfo, code) {
+    $(`.` + code).append("<li><b>Company Info</b>: " + companyInfo + "</li>");
 }
 
-function addCompanyInfo(companyInfo){
-    $('.newCompany').append("<li><b>Company Info</b>: " + companyInfo + "</li>");
+function addObjCompanyInfo(arrayOfObjs) {
+    arrayOfObjs.forEach(function (obj) {
+        companyInfo = `<li>` + obj['Company Information'] + `<li>`;
+        code = obj["Company Code"];
+        addCompanyInfo(companyInfo, code);
+    });
+}
+function addKeyContacts(keyContacts, code) {
+    $(`.` + code).append("<li><b>Key Contacts</b>: " + keyContacts + "</li>");
 }
 
-function addKeyContacts(keyContacts){
-    $('.newCompany').append("<li><b>Key Contacts</b>: " + keyContacts + "</li>");
+function addObjKeyContacts(arrayOfObjs) {
+    arrayOfObjs.forEach(function (obj) {
+        keyContacts = `<li>` + obj['Key Contacts'] + `<li>`;
+        code = obj["Company Code"];
+        addKeyContacts(keyContacts, code);
+    });
 }
 
-function addFinancialPerformance(finPerf){
-    $('.newCompany').append("<li><b>Financial Performance</b>: " + finPerf + "</li></ul>");
+function addFinancialPerformance(financialPerformance, code){
+    $(`.` + code).append("<li><b>Financial Performance</b>: " + financialPerformance + "</li></ul>");
 }
 
-function addButton(){
+function addObjFinancialPerformance(arrayOfObjs) {
+    arrayOfObjs.forEach(function (obj) {
+        financialPerformance = `<li>` + obj['Financial Performance'] + `<li>`;
+        code = obj["Company Code"];
+        addFinancialPerformance(financialPerformance, code);
+    });
+}
+
+function addButton() {
     $('.newCompany').append("<button>Edit</button><button>Delete</button>");
 }
 
-function addDiv(){
+function addDiv() {
+    // createNewSection()
     createMultipleDivs(companyList);
-    addMultipleCompanyNames(companyList);
-    addCompanyStatus(status);
-    addCompanyInfo(companyInfo);
-    addKeyContacts(keyContacts);
-    addFinancialPerformance(finPerf);
+    // addMultipleCompanyNames(companyList);
+    addObjCompanyStatus(companyList);
+     addObjCompanyInfo(companyList);
+    addObjKeyContacts(companyList);
+    addObjFinancialPerformance(companyList);
     addButton();
 }
 $(addDiv)

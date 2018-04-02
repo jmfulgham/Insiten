@@ -34,25 +34,36 @@ let companyInfo;
 let keyContacts;
 let financialPerformance;
 
+
+//create a function that saves the new information as an object and unshift to companyList. unshift for the beginning of the array
+
+function addNewCompany (data){
+ $('.submit').on('click', event =>{
+   console.log("added new");
+ })
+}
+
 //format div with the name and class name
 function createNewSection(name, code) {
-    let newSection = `<section class="newCompany ` + code + ` col-6"><h2>` + name + `</h2><ul></ul></section>`;
+    let newSection = `<section class="newCompany ` + code + ` col-6"><h2>` + name + `</h2></section>`;
     let futureInvestment = $('#future-investment');
     futureInvestment.append(newSection);
 }
+
+
 
 
 //creating sections for each company in arr of obj
 function createMultipleDivs(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
         name = obj["Company Name"];
-        code = obj["Company Code"]
-        createNewSection(name, code)
+        code = obj["Company Code"];
+        createNewSection(name, code);
     });
 }
 
 function addCompanyStatus(status, code) {
-    $(`.` + code).append("<ul><li><b>Status</b>: " + status + "</li>");
+    $(`.` + code).append("<li><b>Status</b>: " + status + "</li>");
 }
 
 function addObjCompanyStatus(arrayOfObjs) {
@@ -117,14 +128,14 @@ function handleEditButton(code) {
             console.log("saved");
         }
         toggleEditSave(code);
-    })
+    });
 }
 
 function handleDeleteButton(code){
     $(`.delete` + code).on('click', event => {
   
         $(`.` + code).remove();
-    })
+    });
 }
 
 
@@ -147,4 +158,6 @@ function addDiv() {
     addObjFinancialPerformance(companyList);
     addMultipleButtons(companyList);
 }
+
+
 $(addDiv)

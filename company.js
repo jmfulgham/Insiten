@@ -1,4 +1,5 @@
-let companyList = [{
+let companyList = [
+    {
         "Company Code": "ABC",
         "Company Name": "ABC REIT",
         "Status": "Researching",
@@ -24,13 +25,7 @@ let companyList = [{
         "Key Contacts": "Alan Smith, Phone: 404-123-4567, Email: asmith@abcreit.com",
         "Financial Performance": "On track: SRH LLC is on track to open 3 more retirement communites in the first half of 2018."
     }
-
 ]
-// let name = companyList["Company Name"];
-// let status = "Pending";
-// let companyInfo= "Construction Company";
-// let keyContacts = "Mone\'t Fulgham; Phone: 4049019199, Email: monetfulgham@gmail.com";
-// let finPerf = "On track: Scheduled to develop 10 properties in Q2 2018";
 
 let name;
 let code;
@@ -38,6 +33,7 @@ let status;
 let companyInfo;
 let keyContacts;
 let financialPerformance;
+
 //format div with the name and class name
 function createNewSection(name, code) {
     let newSection = `<section class="newCompany ` + code + ` col-6"><h2>` + name + `</h2><ul></ul></section>`;
@@ -102,18 +98,55 @@ function addObjFinancialPerformance(arrayOfObjs) {
     });
 }
 
-function addButton() {
-    $('.newCompany').append("<button>Edit</button><button>Delete</button>");
+function addButton(code) {
+    $(`.` + code).append("<button class='edit'>Edit</button><button class='delete'>Delete</button>");
 }
 
+function addMultipleButtons(arrayOfObjs){
+    arrayOfObjs.forEach(function (obj){
+        code = obj["Company Code"];
+        addButton(code);
+        handleEditButton(code);
+    });
+}
+
+function handleEditButton(code) {
+    $(`.` + code).on('click', event => {
+        if ($(event.target).text() === "Save") {
+            console.log("saved");
+            //************** need to add Save function */
+        }
+        toggleEditSave(code);
+    })
+}
+
+// function handleDeleteButton(code){
+//     $(`.` + code).on('click', event => {
+//         if ($(event.target).text() === "Delete") {
+//         }
+//         event.target.delete();
+//     })
+// }
+
+
+function toggleEditSave(code) {
+    let isEditable = $(`.` + code).is('.editable');
+    $(`.` + code).prop('contenteditable', !isEditable);
+    $(`.` + code).toggleClass('contenteditable');
+    isEditable ? $(event.target).text('Edit') : $(event.target).text('Save');
+    $(`.` + code).toggleClass('save');
+    console.log("toggly toggly");
+    //contenteditable doesn't toggle when 'save' is clicked again
+    
+}
+
+
 function addDiv() {
-    // createNewSection()
     createMultipleDivs(companyList);
-    // addMultipleCompanyNames(companyList);
     addObjCompanyStatus(companyList);
      addObjCompanyInfo(companyList);
     addObjKeyContacts(companyList);
     addObjFinancialPerformance(companyList);
-    addButton();
+    addMultipleButtons(companyList);
 }
 $(addDiv)

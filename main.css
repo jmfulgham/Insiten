@@ -51,3 +51,8 @@ nav{
 fieldset{
     border: none;
 }
+
+.contenteditable{
+    background: #EAEAEA;
+
+}

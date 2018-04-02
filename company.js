@@ -52,12 +52,12 @@ function createMultipleDivs(arrayOfObjs) {
 }
 
 function addCompanyStatus(status, code) {
-    $(`.` + code).append("<li><b>Status</b>: " + status + "</li>");
+    $(`.` + code).append("<ul><li><b>Status</b>: " + status + "</li>");
 }
 
 function addObjCompanyStatus(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        status = `<li>` + obj['Status'] + `<li>`;
+        status = "<li>" + obj['Status'] + "</li>";
         code = obj["Company Code"];
         addCompanyStatus(status, code);
     }); 
@@ -69,7 +69,7 @@ function addCompanyInfo(companyInfo, code) {
 
 function addObjCompanyInfo(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        companyInfo = `<li>` + obj['Company Information'] + `<li>`;
+        companyInfo = "<li>" + obj['Company Information'] + "</li>";
         code = obj["Company Code"];
         addCompanyInfo(companyInfo, code);
     });
@@ -80,7 +80,7 @@ function addKeyContacts(keyContacts, code) {
 
 function addObjKeyContacts(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        keyContacts = `<li>` + obj['Key Contacts'] + `<li>`;
+        keyContacts = "<li>" + obj['Key Contacts'] + "</li>";
         code = obj["Company Code"];
         addKeyContacts(keyContacts, code);
     });
@@ -92,14 +92,14 @@ function addFinancialPerformance(financialPerformance, code){
 
 function addObjFinancialPerformance(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        financialPerformance = `<li>` + obj['Financial Performance'] + `<li>`;
+        financialPerformance = "<li>" + obj['Financial Performance'] + "</li>";
         code = obj["Company Code"];
         addFinancialPerformance(financialPerformance, code);
     });
 }
 
 function addButton(code) {
-    $(`.` + code).append("<button class='edit'>Edit</button><button class='delete'>Delete</button>");
+    $(`.` + code).append(`<button class='edit` + code +`'>Edit</button><button class='delete` + code +`'>Delete</button>`);
 }
 
 function addMultipleButtons(arrayOfObjs){
@@ -107,38 +107,36 @@ function addMultipleButtons(arrayOfObjs){
         code = obj["Company Code"];
         addButton(code);
         handleEditButton(code);
+      handleDeleteButton(code);
     });
 }
 
 function handleEditButton(code) {
-    $(`.` + code).on('click', event => {
-        if ($(event.target).text() === "Save") {
+    $(`.edit` + code).on('click', event => {
+        if ($(event.target).text() === "Save") {        
             console.log("saved");
-            //************** need to add Save function */
         }
         toggleEditSave(code);
     })
 }
 
-// function handleDeleteButton(code){
-//     $(`.` + code).on('click', event => {
-//         if ($(event.target).text() === "Delete") {
-//         }
-//         event.target.delete();
-//     })
-// }
+function handleDeleteButton(code){
+    $(`.delete` + code).on('click', event => {
+  
+        $(`.` + code).remove();
+    })
+}
 
 
 function toggleEditSave(code) {
     let isEditable = $(`.` + code).is('.editable');
     $(`.` + code).prop('contenteditable', !isEditable);
     $(`.` + code).toggleClass('contenteditable');
-    isEditable ? $(event.target).text('Edit') : $(event.target).text('Save');
-    $(`.` + code).toggleClass('save');
-    console.log("toggly toggly");
-    //contenteditable doesn't toggle when 'save' is clicked again
-    
+  $(`.` + code).toggleClass('editable');
+    isEditable ?  $(`.edit` + code).text('Edit') : $(`.edit` + code).text('Save');
 }
+
+
 
 
 function addDiv() {

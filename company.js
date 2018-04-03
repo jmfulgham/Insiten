@@ -37,8 +37,8 @@ let financialPerformance;
 
 //create a function that saves the new information as an object and unshift to companyList. unshift for the beginning of the array
 
-function addNewCompanyToClient (){
- $('.submit').on('click', event =>{
+function addNewCompanyToArray (){
+ $('.submit').on('click', function(event){
      event.preventDefault();
      let companyCode = $("input[name='companyCode']").val();
      let targetName = $("input[name='targetName']").val();
@@ -46,12 +46,11 @@ function addNewCompanyToClient (){
      let info = $("input[name='info']").val();
      let contacts = $("input[name='contacts']").val();
      let financials = $("input[name='financials']").val();
-
    if(companyCode, targetName, companyStatus, info, contacts, financials ===""){
      $('.create-new-company').append("<section><h3>All fields are required. Please try again</h3></section>");
      return;
    }
-
+    
      addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials);
      
  });
@@ -69,13 +68,11 @@ function addNewTarget(companyCode, targetName, companyStatus, info, contacts, fi
 
 //format div with the name and class name
 function createNewSection(name, code) {
-    let newSection = `<section class="newCompany ` + code + ` col-6"><h2>` + name + `</h2></section>`;
+    let newSection = "<section class='newCompany " + code + "' col-12><h2>" + name + "</h2></section>";
     let futureInvestment = $('#future-investment');
     futureInvestment.append(newSection);
 
 }
-
-
 
 
 //creating sections for each company in arr of obj
@@ -88,7 +85,7 @@ function createMultipleDivs(arrayOfObjs) {
 }
 
 function addCompanyStatus(status, code) {
-    $(`.` + code).append("<li><b>Status</b>: " + status + "</li>");
+    $("." + code).append("<li><b>Status</b>: " + status + "</li>");
 }
 
 function addObjCompanyStatus(arrayOfObjs) {
@@ -100,7 +97,7 @@ function addObjCompanyStatus(arrayOfObjs) {
 }
 
 function addCompanyInfo(companyInfo, code) {
-    $(`.` + code).append("<li><b>Company Info</b>: " + companyInfo + "</li>");
+    $("." + code).append("<li><b>Company Info</b>: " + companyInfo + "</li>");
 }
 
 function addObjCompanyInfo(arrayOfObjs) {
@@ -111,7 +108,7 @@ function addObjCompanyInfo(arrayOfObjs) {
     });
 }
 function addKeyContacts(keyContacts, code) {
-    $(`.` + code).append("<li><b>Key Contacts</b>: " + keyContacts + "</li>");
+    $("." + code).append("<li><b>Key Contacts</b>: " + keyContacts + "</li>");
 }
 
 function addObjKeyContacts(arrayOfObjs) {
@@ -123,7 +120,7 @@ function addObjKeyContacts(arrayOfObjs) {
 }
 
 function addFinancialPerformance(financialPerformance, code){
-    $(`.` + code).append("<li><b>Financial Performance</b>: " + financialPerformance + "</li></ul>");
+    $("." + code).append("<li><b>Financial Performance</b>: " + financialPerformance + "</li></ul>");
 }
 
 function addObjFinancialPerformance(arrayOfObjs) {
@@ -135,7 +132,7 @@ function addObjFinancialPerformance(arrayOfObjs) {
 }
 
 function addButton(code) {
-    $(`.` + code).append(`<button class='edit` + code +`'>Edit</button><button class='delete` + code +`'>Delete</button>`);
+   $("." + code).append("<button class='edit" + code +"'>Edit</button><button class='delete" + code +"'>Delete</button>");
 }
 
 function addMultipleButtons(arrayOfObjs){
@@ -148,7 +145,7 @@ function addMultipleButtons(arrayOfObjs){
 }
 
 function handleEditButton(code) {
-    $(`.edit` + code).on('click', event => {
+    $(".edit" + code).on('click', function(event) {
         if ($(event.target).text() === "Save") {        
             console.log("saved");
         }
@@ -157,19 +154,19 @@ function handleEditButton(code) {
 }
 
 function handleDeleteButton(code){
-    $(`.delete` + code).on('click', event => {
+    $(".delete" + code).on('click', function(event) {
   
-        $(`.` + code).remove();
+        $("." + code).remove();
     });
 }
 
 
 function toggleEditSave(code) {
-    let isEditable = $(`.` + code).is('.editable');
-    $(`.` + code).prop('contenteditable', !isEditable);
-    $(`.` + code).toggleClass('contenteditable');
-  $(`.` + code).toggleClass('editable');
-    isEditable ?  $(`.edit` + code).text('Edit') : $(`.edit` + code).text('Save');
+    let isEditable = $("." + code).is('.editable');
+    $("." + code).prop('contenteditable', !isEditable);
+   $("." + code).toggleClass('contenteditable');
+  $("." + code).toggleClass('editable');
+    isEditable ?   $(".edit" + code).text('Edit') :  $(".edit" + code).text('Save');
 }
 
 
@@ -188,4 +185,4 @@ function addDiv() {
 
 
 $(addDiv)
-$(addNewCompanyToClient)
+$(addNewCompanyToArray)

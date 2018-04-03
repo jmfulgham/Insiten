@@ -6,6 +6,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <link href="responsive.css" rel="stylesheet" type="text/css" />
     <link href="main.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="company.js" type="text/javascript"></script>
@@ -13,7 +14,7 @@
 
 <body>
     <div class="nav-logo">
-        <section class="logo">Logo here</section>
+        <section class="logo"><img src ="https://www.insiten.com/wp-content/uploads/2017/12/logo_243_50.png" alt="Insiten Code Challenge"></section>
         <nav role="navigation">
             <a href="/">Home
             </a>
@@ -25,7 +26,9 @@
 
     <main role="main">
         <div class="create-new-company">
-            <h2>Create New Investment</h3>
+          <div class="row">
+            <section class="col-6">  
+            <h2>Create New Investment</h2>
                 <form>
                     <legend>
                         <h3>Add New Target</h3>
@@ -46,10 +49,10 @@
                         <br>
                     </fieldset>
                     <input type="submit" class="submit" value="Add New Target">
-
-
                 </form>
+              </section>     
         </div>
+             </div>
         <div class="row" id="future-investment">
 
         </div>

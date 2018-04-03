@@ -37,10 +37,38 @@ let financialPerformance;
 
 //create a function that saves the new information as an object and unshift to companyList. unshift for the beginning of the array
 
-function addNewCompany (data){
+function addNewCompanyToArray (){
  $('.submit').on('click', event =>{
-   console.log("added new");
- })
+     event.preventDefault();
+     let companyCode = $("input[name='companyCode']").val();
+     let targetName = $("input[name='targetName']").val();
+     let companyStatus = $("input[name='status']").val();
+     let info = $("input[name='info']").val();
+     let contacts = $("input[name='contacts']").val();
+     let financials = $("input[name='financials']").val();
+    //  let companyDetails = {
+    //      "Company Code" : companyCode,
+    //     "Company Name" : targetName,
+    //     "Status" : companyStatus,
+    //     "Company Information" : info,
+    //     "Key Contacts" : contacts,
+    //     "Financial Performance" : financials
+    //  }
+    //  companyList.unshift(companyDetails);
+    //  console.log(companyList);
+     addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials);
+     
+ });
+}
+function addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials) {
+    createNewSection(targetName , companyCode);
+    addCompanyStatus(companyStatus, companyCode);
+    addCompanyInfo(info, companyCode);
+    addKeyContacts(contacts, companyCode);
+    addFinancialPerformance(financials, companyCode);
+    addButton(companyCode);
+    handleEditButton(companyCode);
+    handleDeleteButton(companyCode)
 }
 
 //format div with the name and class name
@@ -48,6 +76,7 @@ function createNewSection(name, code) {
     let newSection = `<section class="newCompany ` + code + ` col-6"><h2>` + name + `</h2></section>`;
     let futureInvestment = $('#future-investment');
     futureInvestment.append(newSection);
+
 }
 
 
@@ -160,4 +189,7 @@ function addDiv() {
 }
 
 
+
+
 $(addDiv)
+$(addNewCompanyToArray)

@@ -1,5 +1,4 @@
-let companyList = [
-    {
+let companyList = [{
         "Company Code": "ABC",
         "Company Name": "ABC REIT",
         "Status": "Researching",
@@ -35,33 +34,23 @@ let keyContacts;
 let financialPerformance;
 
 
-//create a function that saves the new information as an object and unshift to companyList. unshift for the beginning of the array
+function storeNewTargetInformation() {
+    $('.submit').on('click', event => {
+        event.preventDefault();
+        let companyCode = $("input[name='companyCode']").val();
+        let targetName = $("input[name='targetName']").val();
+        let companyStatus = $("input[name='status']").val();
+        let info = $("input[name='info']").val();
+        let contacts = $("input[name='contacts']").val();
+        let financials = $("input[name='financials']").val();
+        addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials);
 
-function addNewCompanyToArray (){
- $('.submit').on('click', event =>{
-     event.preventDefault();
-     let companyCode = $("input[name='companyCode']").val();
-     let targetName = $("input[name='targetName']").val();
-     let companyStatus = $("input[name='status']").val();
-     let info = $("input[name='info']").val();
-     let contacts = $("input[name='contacts']").val();
-     let financials = $("input[name='financials']").val();
-    //  let companyDetails = {
-    //      "Company Code" : companyCode,
-    //     "Company Name" : targetName,
-    //     "Status" : companyStatus,
-    //     "Company Information" : info,
-    //     "Key Contacts" : contacts,
-    //     "Financial Performance" : financials
-    //  }
-    //  companyList.unshift(companyDetails);
-    //  console.log(companyList);
-     addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials);
-     
- });
+    });
 }
+
+//creating a new section for the new target
 function addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials) {
-    createNewSection(targetName , companyCode);
+    createNewSection(targetName, companyCode);
     addCompanyStatus(companyStatus, companyCode);
     addCompanyInfo(info, companyCode);
     addKeyContacts(contacts, companyCode);
@@ -76,10 +65,9 @@ function createNewSection(name, code) {
     let newSection = `<section class="newCompany ` + code + ` col-6"><h2>` + name + `</h2></section>`;
     let futureInvestment = $('#future-investment');
     futureInvestment.append(newSection);
-
 }
 
-
+/////////// add if empty function for form
 
 
 //creating sections for each company in arr of obj
@@ -100,7 +88,7 @@ function addObjCompanyStatus(arrayOfObjs) {
         status = "<li>" + obj['Status'] + "</li>";
         code = obj["Company Code"];
         addCompanyStatus(status, code);
-    }); 
+    });
 }
 
 function addCompanyInfo(companyInfo, code) {
@@ -114,6 +102,7 @@ function addObjCompanyInfo(arrayOfObjs) {
         addCompanyInfo(companyInfo, code);
     });
 }
+
 function addKeyContacts(keyContacts, code) {
     $(`.` + code).append("<li><b>Key Contacts</b>: " + keyContacts + "</li>");
 }
@@ -126,7 +115,7 @@ function addObjKeyContacts(arrayOfObjs) {
     });
 }
 
-function addFinancialPerformance(financialPerformance, code){
+function addFinancialPerformance(financialPerformance, code) {
     $(`.` + code).append("<li><b>Financial Performance</b>: " + financialPerformance + "</li></ul>");
 }
 
@@ -139,30 +128,30 @@ function addObjFinancialPerformance(arrayOfObjs) {
 }
 
 function addButton(code) {
-    $(`.` + code).append(`<button class='edit` + code +`'>Edit</button><button class='delete` + code +`'>Delete</button>`);
+    $(`.` + code).append(`<button class='edit` + code + `'>Edit</button><button class='delete` + code + `'>Delete</button>`);
 }
 
-function addMultipleButtons(arrayOfObjs){
-    arrayOfObjs.forEach(function (obj){
+function addMultipleButtons(arrayOfObjs) {
+    arrayOfObjs.forEach(function (obj) {
         code = obj["Company Code"];
         addButton(code);
         handleEditButton(code);
-      handleDeleteButton(code);
+        handleDeleteButton(code);
     });
 }
 
 function handleEditButton(code) {
     $(`.edit` + code).on('click', event => {
-        if ($(event.target).text() === "Save") {        
+        if ($(event.target).text() === "Save") {
             console.log("saved");
         }
         toggleEditSave(code);
     });
 }
 
-function handleDeleteButton(code){
+function handleDeleteButton(code) {
     $(`.delete` + code).on('click', event => {
-  
+
         $(`.` + code).remove();
     });
 }
@@ -172,24 +161,20 @@ function toggleEditSave(code) {
     let isEditable = $(`.` + code).is('.editable');
     $(`.` + code).prop('contenteditable', !isEditable);
     $(`.` + code).toggleClass('contenteditable');
-  $(`.` + code).toggleClass('editable');
-    isEditable ?  $(`.edit` + code).text('Edit') : $(`.edit` + code).text('Save');
+    $(`.` + code).toggleClass('editable');
+    isEditable ? $(`.edit` + code).text('Edit') : $(`.edit` + code).text('Save');
 }
-
 
 
 
 function addDiv() {
     createMultipleDivs(companyList);
     addObjCompanyStatus(companyList);
-     addObjCompanyInfo(companyList);
+    addObjCompanyInfo(companyList);
     addObjKeyContacts(companyList);
     addObjFinancialPerformance(companyList);
     addMultipleButtons(companyList);
 }
 
-
-
-
 $(addDiv)
-$(addNewCompanyToArray)
+$(storeNewTargetInformation)

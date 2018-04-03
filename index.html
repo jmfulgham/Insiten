@@ -9,7 +9,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="company.js" type="text/javascript"></script>
-    <script src="index.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -26,27 +25,35 @@
 
     <main role="main">
         <div class="create-new-company">
-            <h3>Create New Investment</h3>
-            <form>
-                <legend>Add New Target</legend>
-                <fieldset>
-                    Target Name:
-                    <input type="text">
-                    <br> Company Info:
-                    <input type="text">
-                    <br> Key Contacts:
-                    <input type="text">
-                    <br> Financial Performance:
-                    <input type="text">
-                    <br>
-                  </fieldset>
+            <h2>Create New Investment</h3>
+                <form>
+                    <legend>
+                        <h3>Add New Target</h3>
+                    </legend>
+                    <fieldset>
+                        Company Code:
+                        <input type="text" name="companyCode" required>
+                        <br> Target Name:
+                        <input type="text" name="targetName" required>
+                        <br> Status:
+                        <input type="text" name="status" required>
+                        <br> Company Info:
+                        <input type="text" name="info" required>
+                        <br> Key Contacts:
+                        <input type="text" name="contacts" required>
+                        <br> Financial Performance:
+                        <input type="text" name="financials" required>
+                        <br>
+                    </fieldset>
                     <input type="submit" class="submit" value="Add New Target">
-            </form>
+
+
+                </form>
         </div>
-            <div class="row" id="future-investment">
-                
-            </div>
-     
+        <div class="row" id="future-investment">
+
+        </div>
+
 
 
 

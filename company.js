@@ -37,7 +37,7 @@ let financialPerformance;
 
 //create a function that saves the new information as an object and unshift to companyList. unshift for the beginning of the array
 
-function addNewCompanyToArray (){
+function addNewCompanyToClient (){
  $('.submit').on('click', event =>{
      event.preventDefault();
      let companyCode = $("input[name='companyCode']").val();
@@ -46,11 +46,12 @@ function addNewCompanyToArray (){
      let info = $("input[name='info']").val();
      let contacts = $("input[name='contacts']").val();
      let financials = $("input[name='financials']").val();
+
    if(companyCode, targetName, companyStatus, info, contacts, financials ===""){
      $('.create-new-company').append("<section><h3>All fields are required. Please try again</h3></section>");
      return;
    }
-    
+
      addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials);
      
  });
@@ -187,4 +188,4 @@ function addDiv() {
 
 
 $(addDiv)
-$(addNewCompanyToArray)
+$(addNewCompanyToClient)

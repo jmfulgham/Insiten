@@ -6,9 +6,17 @@ li{
     list-style: none;
 }
 
+
+
+/* format the h2 in each section (the company name) to have a circle with the name centered in the div*/
+/* light shadows under each div */
+/* airy background */
+/* space in the li's */
+
 .nav-logo{
     margin: 20px;
 }
+
 .logo{
 /*    height: 200px; */
     display: inline;
@@ -16,6 +24,9 @@ li{
 
 }
 
+.submit{
+  cursor: pointer;
+}
 .newCompany{
     border: 1px solid pink;
   padding: 20px;
@@ -24,10 +35,14 @@ li{
 
 form{
   border: 1px solid black;
+  padding: 10px;
 }
 
 
-  
+  button {
+    margin: 4px;
+    cursor: pointer;
+}
 
 nav{
     font-size: 20px;
@@ -36,12 +51,19 @@ nav{
   float: right;
 }
 
-a{
+a
+{
   text-decoration: none;
+  color:grey;
+
+}
+a:visited{
+  color:black;
 }
 
 a:hover, a:active{
   color: DodgerBlue;
+  cursor: pointer;
 }
 
 
@@ -55,26 +77,24 @@ a:hover, a:active{
 }
 
 
-.company1, .company2, .company3{
-    background-color: pink;
-    border: 1px solid black;
-    margin: 10px;
-    padding: 15px;
-}
 .future-investment{
     margin-top: 20px;
     display: block;
     border: 1px solid black;
 }
 
-.inner-photo, .inner-photo2, .inner-photo3{
-    border: 1px solid black;
-}
 
 fieldset{
     border: none;
+  text-align: left;
 }
 
+input, select{
+  padding-left: 3px;
+  height: 25px;
+  margin: 2px;
+  
+}
 .contenteditable{
     background: #EAEAEA;
 

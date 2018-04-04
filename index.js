@@ -26,14 +26,6 @@ let companyList = [{
     }
 ]
 
-// let name;
-// let code;
-// let status;
-// let companyInfo;
-// let keyContacts;
-// let financialPerformance;
-
-
 function storeNewTargetInformation() {
     $('.submit').on('click', function (event) {
         event.preventDefault();
@@ -47,13 +39,11 @@ function storeNewTargetInformation() {
             $('.create-new-company').append("<section><h3>All fields are required. Please try again</h3></section>");
             return;
         }
-
         addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials);
         $('.create-new-company').append("<section><h3>Target added!</h3></section>");
     });
 }
 
-//creating a new section for the new target
 function addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials) {
     createNewSection(targetName, companyCode);
     addCompanyStatus(companyStatus, companyCode);
@@ -65,17 +55,12 @@ function addNewTarget(companyCode, targetName, companyStatus, info, contacts, fi
     handleDeleteButton(companyCode)
 }
 
-//format div with the name and class name
 function createNewSection(name, code) {
     let newSection = "<section aria-live='polite' class='newCompany " + code + "' col-12><h2>" + name + "</h2><ul class='target-li" + code + "'></ul></section>";
     let futureInvestment = $('#future-investment');
     futureInvestment.append(newSection);
 }
 
-/////////// add if empty function for form
-
-
-//creating sections for each company in arr of obj
 function createMultipleDivs(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
         let name = obj["Company Name"];
@@ -86,7 +71,6 @@ function createMultipleDivs(arrayOfObjs) {
 
 function addCompanyStatus(status, code) {
     let newStatus = "<li class='status-list" + code + "'><b>Status</b>:" + status + "</li>";
-    console.log(status);
     $(".target-li" + code).append(newStatus);
 
 }
@@ -149,7 +133,6 @@ function addMultipleButtons(arrayOfObjs) {
 }
 
 function handleSelectMenu(code) {
-    console.log('select triggered', code);
     let oldStatus = $(".status-list" + code).next("li");
     oldStatus.empty();
     $('.status-list' + code).replaceWith("<li><b>Status</b><select name=status id=statusList" + code + "><option value=‘pending’>Pending</option><option value=‘approved’>Approved</option><option value=‘researching’>Researching</option><option value=‘denied’>Denied</option></select></li>");
@@ -159,7 +142,6 @@ function handleSelectMenu(code) {
             return;
         } else {
             $("#statusList" + code).prop('disabled', 'disabled');
-            console.log("done editing");
         }
     })
 }
@@ -170,7 +152,6 @@ function handleEditButton(code) {
             toggleEditSave(code);
             handleSelectMenu(code);
         } else {
-            console.log("saving");
             toggleEditSave(code);
         }
     })
@@ -183,7 +164,6 @@ function handleDeleteButton(code) {
     });
 }
 
-
 function toggleEditSave(code) {
     let isEditable = $("." + code).is('.editable');
     $("." + code).prop('contenteditable', !isEditable);
@@ -191,7 +171,6 @@ function toggleEditSave(code) {
     $("." + code).toggleClass('editable');
     isEditable ? $(".edit" + code).text('Edit') : $(".edit" + code).text('Save');
 }
-
 
 function addDiv() {
     createMultipleDivs(companyList);

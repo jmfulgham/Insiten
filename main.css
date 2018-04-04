@@ -2,42 +2,81 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: grey;
+}
+
+a:hover,
+a:active {
+  color: #44a9f8;
+  cursor: pointer;
+}
+
+a:visited {
+  color: black;
+}
+
 body {
   background-color: white;
 }
 
-li {
-  list-style: none;
-  margin: 2px;
-  /* color: grey; */
+button {
+  margin: 4px;
+  cursor: pointer;
 }
 
- b::section{
-  text-decoration: underline;
-}
-/* format the h2 in each section (the company name) to have a circle with the name centered in the div*/
-
-
-
-/* space in the li's */
-
-.nav-logo {
-  margin: 20px;
+.company-list,
+  {
+  height: 250px;
 }
 
-.logo {
-  /*    height: 200px; */
-  margin-left: 10px;
-  margin-bottom: 10px;
+.contenteditable {
+  background: #EAEAEA;
+}
+
+.create-new-company {
+  border: 1px solid #C7E4FF;
+  background-color: #44aaf83c;
+  border-radius: 10px;
+}
+
+fieldset {
+  border: none;
+  text-align: left;
+}
+
+form {
+  padding: 5px;
 }
 
 h1 {
   margin-bottom: 10px;
 }
 
-.submit {
-  cursor: pointer;
-  margin: 5px;
+input,
+select {
+  padding-left: 3px;
+  height: 25px;
+  margin: 2px;
+}
+
+li {
+  list-style: none;
+  margin: 2px;
+}
+
+.logo {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+nav {
+  font-size: 20px;
+}
+
+.nav-logo {
+  margin: 20px;
 }
 
 .newCompany {
@@ -51,68 +90,7 @@ h1 {
   box-shadow: 0 8px 6px -6px rgb(181, 179, 179);
 }
 
-form {
-  padding: 5px;
-}
-
-button {
-  margin: 4px;
+.submit {
   cursor: pointer;
-}
-
-nav {
-  /* display: inline-block; */
-  font-size: 20px;
-  /* padding-left: 50%; */
-  /* float: right; */
-  /* margin-top: 5px;; */
-}
-
-a {
-  text-decoration: none;
-  color: grey;
-}
-
-a:visited {
-  color: black;
-}
-
-a:hover,
-a:active {
-  color: #44a9f8;
-  cursor: pointer;
-}
-
-.company-list,
-{
-  height: 250px;
-}
-
-
-.create-new-company {
-  border: 1px solid #C7E4FF;
-  background-color: #44aaf83c;
-  border-radius: 10px;
-}
-
-.future-investment {
-  margin-top: 20px;
-  display: block;
-  border: 1px solid black;
-}
-
-fieldset {
-  border: none;
-  text-align: left;
-}
-
-input,
-select {
-  padding-left: 3px;
-  height: 25px;
-  margin: 2px;
-}
-
-.contenteditable {
-  background: #EAEAEA;
+  margin: 5px;
 }

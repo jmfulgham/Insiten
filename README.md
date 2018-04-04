@@ -1,5 +1,16 @@
-### Insiten Dashboard Challenge
+## Insiten Dashboard Challenge
+This client-side app will allow users to enter data concerning potential targets for acquisition. Users can create new targets, read the targets already on the list, update, and delete targets on the list. 
 
-wireframe: https://wireframe.cc/m10F2h
+### Links
+Initial wireframe: https://wireframe.cc/m10F2h
+Live link: https://second-partridge.glitch.me/
 
-Intially I wanted to add my new target to the companyList and re-format the list using the updated array. 
+#### Languages Used
+* HTML5
+* CSS
+* JavaScript
+* jQuery
+
+
+
+ 

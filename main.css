@@ -84,7 +84,7 @@ a:active {
 }
 
 .company-list,
-.prospects {
+{
   height: 250px;
 }
 
@@ -92,6 +92,7 @@ a:active {
 .create-new-company {
   border: 1px solid #C7E4FF;
   background-color: #44aaf83c;
+  border-radius: 10px;
 }
 
 .future-investment {

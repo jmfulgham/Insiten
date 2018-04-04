@@ -26,12 +26,12 @@ let companyList = [{
     }
 ]
 
-let name;
-let code;
-let status;
-let companyInfo;
-let keyContacts;
-let financialPerformance;
+// let name;
+// let code;
+// let status;
+// let companyInfo;
+// let keyContacts;
+// let financialPerformance;
 
 
 function storeNewTargetInformation() {
@@ -78,8 +78,8 @@ function createNewSection(name, code) {
 //creating sections for each company in arr of obj
 function createMultipleDivs(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        name = obj["Company Name"];
-        code = obj["Company Code"];
+        let name = obj["Company Name"];
+        let code = obj["Company Code"];
         createNewSection(name, code);
     });
 }
@@ -93,8 +93,8 @@ function addCompanyStatus(status, code) {
 
 function addObjCompanyStatus(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        status = "<li>" + obj['Status'] + "</li>";
-        code = obj["Company Code"];
+        let status = "<li>" + obj['Status'] + "</li>";
+        let code = obj["Company Code"];
         addCompanyStatus(status, code);
     });
 }
@@ -105,8 +105,8 @@ function addCompanyInfo(companyInfo, code) {
 
 function addObjCompanyInfo(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        companyInfo = "<li>" + obj['Company Information'] + "</li>";
-        code = obj["Company Code"];
+        let companyInfo = "<li>" + obj['Company Information'] + "</li>";
+        let code = obj["Company Code"];
         addCompanyInfo(companyInfo, code);
     });
 }
@@ -117,8 +117,8 @@ function addKeyContacts(keyContacts, code) {
 
 function addObjKeyContacts(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        keyContacts = "<li>" + obj['Key Contacts'] + "</li>";
-        code = obj["Company Code"];
+        let keyContacts = "<li>" + obj['Key Contacts'] + "</li>";
+        let code = obj["Company Code"];
         addKeyContacts(keyContacts, code);
     });
 }
@@ -129,8 +129,8 @@ function addFinancialPerformance(financialPerformance, code) {
 
 function addObjFinancialPerformance(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        financialPerformance = "<li>" + obj['Financial Performance'] + "</li>";
-        code = obj["Company Code"];
+        let financialPerformance = "<li>" + obj['Financial Performance'] + "</li>";
+        let code = obj["Company Code"];
         addFinancialPerformance(financialPerformance, code);
     });
 }
@@ -141,7 +141,7 @@ function addButton(code) {
 
 function addMultipleButtons(arrayOfObjs) {
     arrayOfObjs.forEach(function (obj) {
-        code = obj["Company Code"];
+        let code = obj["Company Code"];
         addButton(code);
         handleEditButton(code);
         handleDeleteButton(code);

@@ -34,23 +34,23 @@ let keyContacts;
 let financialPerformance;
 
 
-function storeNewTargetInformation (){
- $('.submit').on('click', function(event){
-     event.preventDefault();
-     let companyCode = $("input[name='companyCode']").val();
-     let targetName = $("input[name='targetName']").val();
-     let companyStatus = $("#status :selected").text();
-     let info = $("input[name='info']").val();
-     let contacts = $("input[name='contacts']").val();
-     let financials = $("textarea[name='financials']").val();
-   if(companyCode, targetName, companyStatus, info, contacts, financials ===""){
-     $('.create-new-company').append("<section><h3>All fields are required. Please try again</h3></section>");
-     return;
-   }
-    
-     addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials);
-   $('.create-new-company').append("<section><h3>Target added!</h3></section>");
- });
+function storeNewTargetInformation() {
+    $('.submit').on('click', function (event) {
+        event.preventDefault();
+        let companyCode = $("input[name='companyCode']").val();
+        let targetName = $("input[name='targetName']").val();
+        let companyStatus = $("#status :selected").text();
+        let info = $("input[name='info']").val();
+        let contacts = $("input[name='contacts']").val();
+        let financials = $("textarea[name='financials']").val();
+        if (companyCode, targetName, companyStatus, info, contacts, financials === "") {
+            $('.create-new-company').append("<section><h3>All fields are required. Please try again</h3></section>");
+            return;
+        }
+
+        addNewTarget(companyCode, targetName, companyStatus, info, contacts, financials);
+        $('.create-new-company').append("<section><h3>Target added!</h3></section>");
+    });
 }
 
 //creating a new section for the new target
@@ -67,7 +67,7 @@ function addNewTarget(companyCode, targetName, companyStatus, info, contacts, fi
 
 //format div with the name and class name
 function createNewSection(name, code) {
-    let newSection = "<section aria-live='polite' class='newCompany " + code + "' col-12><h2>" + name + "</h2><ul class='target-li" + code+"'></ul></section>";
+    let newSection = "<section aria-live='polite' class='newCompany " + code + "' col-12><h2>" + name + "</h2><ul class='target-li" + code + "'></ul></section>";
     let futureInvestment = $('#future-investment');
     futureInvestment.append(newSection);
 }
@@ -85,10 +85,10 @@ function createMultipleDivs(arrayOfObjs) {
 }
 
 function addCompanyStatus(status, code) {
-    let newStatus = "<li class='status-list" + code + "'><b>Status</b>:" + status +"</li>";
+    let newStatus = "<li class='status-list" + code + "'><b>Status</b>:" + status + "</li>";
     console.log(status);
     $(".target-li" + code).append(newStatus);
-    
+
 }
 
 function addObjCompanyStatus(arrayOfObjs) {
@@ -100,7 +100,7 @@ function addObjCompanyStatus(arrayOfObjs) {
 }
 
 function addCompanyInfo(companyInfo, code) {
-    $(".target-li" + code).append("<li><b>Company Info</b>: " + companyInfo + "</li>");
+    $(".target-li" + code).append("<li><b>Company Info</b>:" + companyInfo + "</li>");
 }
 
 function addObjCompanyInfo(arrayOfObjs) {
@@ -123,7 +123,7 @@ function addObjKeyContacts(arrayOfObjs) {
     });
 }
 
-function addFinancialPerformance(financialPerformance, code){
+function addFinancialPerformance(financialPerformance, code) {
     $(".target-li" + code).append("<li><b>Financial Performance</b>: " + financialPerformance + "</li></ul>");
 }
 
@@ -136,7 +136,7 @@ function addObjFinancialPerformance(arrayOfObjs) {
 }
 
 function addButton(code) {
-   $(".target-li" + code).append("<button class='edit" + code +"'>Edit</button><button class='delete" + code +"'>Delete</button>");
+    $(".target-li" + code).append("<button class='edit" + code + "'>Edit</button><button class='delete" + code + "'>Delete</button>");
 }
 
 function addMultipleButtons(arrayOfObjs) {
@@ -147,37 +147,38 @@ function addMultipleButtons(arrayOfObjs) {
         handleDeleteButton(code);
     });
 }
-function handleSelectMenu(code){
-  console.log('select triggered', code);
+
+function handleSelectMenu(code) {
+    console.log('select triggered', code);
     let oldStatus = $(".status-list" + code).next("li");
     oldStatus.empty();
-  $('.status-list' + code).replaceWith("<li><b>Status</b><select name=status id=statusList"+code+"><option value=‘pending’>Pending</option><option value=‘approved’>Approved</option><option value=‘researching’>Researching</option><option value=‘denied’>Denied</option></select></li>");
-  $(".edit" + code).on('click', function(event) {
-    if ($(event.target).text() === "Save") { 
-        $("#statusList"+code).removeAttr('disabled', 'disabled');
-      return;
-    }
-    else{
-        $("#statusList"+code).prop('disabled', 'disabled');
-      console.log("done editing");           
+    $('.status-list' + code).replaceWith("<li><b>Status</b><select name=status id=statusList" + code + "><option value=‘pending’>Pending</option><option value=‘approved’>Approved</option><option value=‘researching’>Researching</option><option value=‘denied’>Denied</option></select></li>");
+    $(".edit" + code).on('click', function (event) {
+        if ($(event.target).text() === "Save") {
+            $("#statusList" + code).removeAttr('disabled', 'disabled');
+            return;
+        } else {
+            $("#statusList" + code).prop('disabled', 'disabled');
+            console.log("done editing");
+        }
+    })
 }
-  }
-   )}
-     
-function handleEditButton(code) {
-    $(".edit" + code).on('click', function(event) {
-      if ($(event.target).text() === "Edit") { 
-      toggleEditSave(code);
-      handleSelectMenu(code);
-    } 
-      else {console.log("saving");
-          toggleEditSave(code);
-}
-    })}
 
-function handleDeleteButton(code){
-    $(".delete" + code).on('click', function(event) {
-  
+function handleEditButton(code) {
+    $(".edit" + code).on('click', function (event) {
+        if ($(event.target).text() === "Edit") {
+            toggleEditSave(code);
+            handleSelectMenu(code);
+        } else {
+            console.log("saving");
+            toggleEditSave(code);
+        }
+    })
+}
+
+function handleDeleteButton(code) {
+    $(".delete" + code).on('click', function (event) {
+
         $("." + code).remove();
     });
 }
@@ -186,9 +187,9 @@ function handleDeleteButton(code){
 function toggleEditSave(code) {
     let isEditable = $("." + code).is('.editable');
     $("." + code).prop('contenteditable', !isEditable);
-   $("." + code).toggleClass('contenteditable');
-  $("." + code).toggleClass('editable');
-    isEditable ?   $(".edit" + code).text('Edit') :  $(".edit" + code).text('Save');
+    $("." + code).toggleClass('contenteditable');
+    $("." + code).toggleClass('editable');
+    isEditable ? $(".edit" + code).text('Edit') : $(".edit" + code).text('Save');
 }
 
 

@@ -1,101 +1,117 @@
-*{
+* {
   font-family: 'Montserrat', sans-serif;
 }
 
-li{
-    list-style: none;
+body {
+  background-color: white;
 }
 
+li {
+  list-style: none;
+  margin: 2px;
+  /* color: grey; */
+}
 
-
+ b::section{
+  text-decoration: underline;
+}
 /* format the h2 in each section (the company name) to have a circle with the name centered in the div*/
-/* light shadows under each div */
-/* airy background */
+
+
+
 /* space in the li's */
 
-.nav-logo{
-    margin: 20px;
+.nav-logo {
+  margin: 20px;
 }
 
-.logo{
-/*    height: 200px; */
-    display: inline;
-  padding: 20px;
-
+.logo {
+  /*    height: 200px; */
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
-.submit{
+h1 {
+  margin-bottom: 10px;
+}
+
+.submit {
   cursor: pointer;
+  margin: 5px;
 }
-.newCompany{
-    border: 1px solid pink;
+
+.newCompany {
+  background: linear-gradient(to right, white, #44aaf87c);
+  border: 1px solid silver;
+  border-radius: 10px;
   padding: 20px;
   margin: 10px;
+  -webkit-box-shadow: 0 8px 6px -6px rgb(181, 179, 179);
+  -moz-box-shadow: 0 8px 6px -6px rgb(181, 179, 179);
+  box-shadow: 0 8px 6px -6px rgb(181, 179, 179);
 }
 
-form{
-  border: 1px solid black;
-  padding: 10px;
+form {
+  padding: 5px;
 }
 
-
-  button {
-    margin: 4px;
-    cursor: pointer;
-}
-
-nav{
-    font-size: 20px;
-    display: inline;
-  padding-left: 5px;
-  float: right;
-}
-
-a
-{
-  text-decoration: none;
-  color:grey;
-
-}
-a:visited{
-  color:black;
-}
-
-a:hover, a:active{
-  color: DodgerBlue;
+button {
+  margin: 4px;
   cursor: pointer;
 }
 
-
-.company-list, .prospects{
-    height: 250px;
-   
+nav {
+  /* display: inline-block; */
+  font-size: 20px;
+  /* padding-left: 50%; */
+  /* float: right; */
+  /* margin-top: 5px;; */
 }
 
-.prospects, .create-new-company{
-    border: 1px solid red;
+a {
+  text-decoration: none;
+  color: grey;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover,
+a:active {
+  color: #44a9f8;
+  cursor: pointer;
+}
+
+.company-list,
+.prospects {
+  height: 250px;
 }
 
 
-.future-investment{
-    margin-top: 20px;
-    display: block;
-    border: 1px solid black;
+.create-new-company {
+  border: 1px solid #C7E4FF;
+  background-color: #44aaf83c;
 }
 
+.future-investment {
+  margin-top: 20px;
+  display: block;
+  border: 1px solid black;
+}
 
-fieldset{
-    border: none;
+fieldset {
+  border: none;
   text-align: left;
 }
 
-input, select{
+input,
+select {
   padding-left: 3px;
   height: 25px;
   margin: 2px;
-  
 }
-.contenteditable{
-    background: #EAEAEA;
 
+.contenteditable {
+  background: #EAEAEA;
 }
